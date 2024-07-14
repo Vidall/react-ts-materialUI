@@ -1,7 +1,11 @@
+import { BrowserRouter } from "react-router-dom";
+import { AppRoute } from "./routes";
+
+
 export const App = () => {
   return (
-    <div className="App">
-      Teste
-    </div>
+    <BrowserRouter>
+      <AppRoute/>
+    </BrowserRouter>
   );
 }
