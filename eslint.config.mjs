@@ -38,8 +38,7 @@ export default [
         'error',
         { max: 1, maxEOF: 1, maxBOF: 0 }
       ],
-      'react/react-in-jsx-scope': 'off'
-
+      'react/react-in-jsx-scope': 'off',
     }
   },
 ];

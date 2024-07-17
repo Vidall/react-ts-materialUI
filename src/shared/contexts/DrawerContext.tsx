@@ -15,7 +15,8 @@ interface IDrawerContextData {
 interface IDrawerOptions {
   icon: string,
   label: string,
-  path: string
+  path: string,
+  onClick?: () => void,
 }
 
 export const DrawerContext = createContext({} as IDrawerContextData);
