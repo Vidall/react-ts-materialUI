@@ -3,7 +3,7 @@ import { Box, Button, Icon, Paper, TextField, useTheme } from '@mui/material';
 /*eslint-disable no-unused-vars*/
 /*eslint-disable react/prop-types*/
 
-interface IFerramentasDaListagem {
+interface IFerramentasDaListagemProps {
   textoDaBusca?: string,
   mostrarInputBusca?: boolean,
   aoMudarTextoDaBusca?: (novoTexto: string) => void
@@ -13,7 +13,7 @@ interface IFerramentasDaListagem {
 }
 
 /*eslint-disable no-undef*/
-export const FerramentasDaListagem: React.FC<IFerramentasDaListagem> = (
+export const FerramentasDaListagem: React.FC<IFerramentasDaListagemProps> = (
   {
     textoDaBusca= '',
     mostrarInputBusca=false,
@@ -51,7 +51,7 @@ export const FerramentasDaListagem: React.FC<IFerramentasDaListagem> = (
             variant='contained'
             color='primary'
             disableElevation
-            endIcon={<Icon>add</Icon>}
+            startIcon={<Icon>add</Icon>}
             onClick={aoClicarEmNovo}
           >
             {textoBotaoNovo}

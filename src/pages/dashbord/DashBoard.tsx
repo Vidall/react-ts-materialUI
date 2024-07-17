@@ -1,4 +1,4 @@
-import { FerramentasDaListagem } from '../../shared/components';
+import { FerramentasDeDetalhe } from '../../shared/components';
 import { LayoutBase } from '../../shared/layouts';
 import { Box } from '@mui/material';
 
@@ -7,7 +7,8 @@ export const DashBoard = () => {
     <>      
       <LayoutBase titulo='DashBoard' barraDeFerramentas={
         (
-          <FerramentasDaListagem mostrarInputBusca/>
+          <FerramentasDeDetalhe></FerramentasDeDetalhe>
+          // <FerramentasDaListagem mostrarInputBusca/>
         )}>
 
         <Box display='flex' justifyContent='center' height={400} width="100%">
