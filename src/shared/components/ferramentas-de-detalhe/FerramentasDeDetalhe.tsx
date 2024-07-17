@@ -1,17 +1,39 @@
 import { Box, Icon, Button, useTheme, Paper, Divider } from '@mui/material';
 
 interface IFerramentasDaListagemProps {
-  textoDaBusca?: string,
-  mostrarInputBusca?: boolean,
-  /*eslint-disable-next-line no-unused-vars*/
-  aoMudarTextoDaBusca?: (novoTexto: string) => void
-  textoBotao?: string,
+  textoBotaoNovo?: string,
   mostrarBotaoNovo?: boolean,
-  aoClicarEmNovo?: () => void
+  mostrarBotaoVoltar?: boolean,
+  mostrarBotaoApagar?: boolean,
+  mostrarBotaoSalvar?: boolean,
+  mostrarBotaoSalvarEFechar?: boolean,
+  
+  aoClicarEmBotaoNovo?: () => void
+  aoClicarEmBotaoSalvar?: () => void
+  aoClicarEmBotaoSalvarEFechar?: () => void
+  aoClicarEmVoltar?: () => void
+  aoClicarEmBotaoApagar?: () => void
 }
 
 /*eslint-disable no-undef*/
-export const FerramentasDeDetalhe: React.FC<IFerramentasDaListagemProps> = () => {
+/*eslint-disable no-unused-vars*/
+/*eslint-disable react/prop-types*/
+/*eslint-disable @typescript-eslint/no-unused-vars*/
+export const FerramentasDeDetalhe: React.FC<IFerramentasDaListagemProps> = ({
+  textoBotaoNovo = 'Novo',
+
+  mostrarBotaoNovo = true,
+  mostrarBotaoSalvar = true,
+  mostrarBotaoVoltar = true,
+  mostrarBotaoApagar = true,
+  mostrarBotaoSalvarEFechar = false,
+  
+  aoClicarEmBotaoNovo,
+  aoClicarEmBotaoSalvar,
+  aoClicarEmBotaoSalvarEFechar,
+  aoClicarEmVoltar,
+  aoClicarEmBotaoApagar
+}) => {
   const theme = useTheme();
   return (
     <Box 
@@ -24,46 +46,70 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDaListagemProps> = () =>
       padding={1}
       gap={1}
     >
-      <Button
-        variant={'contained'}
-        color='primary'
-        disableElevation
-        startIcon={<Icon>save</Icon>}
-      >
-        {'Salvar'}
-      </Button>
+      { mostrarBotaoSalvar && (
 
-      <Button
-        variant={'outlined'}
-        color='primary'
-        disableElevation
-        startIcon={<Icon>save</Icon>}
-      >
-        {'Salvar e voltar'}
-      </Button>
+        <Button
+          variant={'contained'}
+          color='primary'
+          disableElevation
+          startIcon={<Icon>save</Icon>}
+        >
+          {'Salvar'}
+        </Button>
+      )}
 
-      <Button
-        variant={'outlined'}
-        color='primary'
-        disableElevation
-        startIcon={<Icon>delete</Icon>}
-      >
-        {'Apagar'}
-      </Button>
+      { mostrarBotaoSalvarEFechar && (
+
+        <Button
+          variant={'outlined'}
+          color='primary'
+          disableElevation
+          startIcon={<Icon>save</Icon>}
+        >
+          {'Salvar e voltar'}
+        </Button>
+      )}
+
+      { mostrarBotaoApagar && (
+
+        <Button
+          variant={'outlined'}
+          color='primary'
+          disableElevation
+          startIcon={<Icon>delete</Icon>}
+        >
+          {'Apagar'}
+        </Button>
+      )}
+
+      { mostrarBotaoNovo && (
+
+        <Button
+          variant={'outlined'}
+          color='primary'
+          disableElevation
+          startIcon={<Icon>add</Icon>}
+        >
+          {textoBotaoNovo}
+        </Button>
+      )}
 
       <Divider
         variant='middle'
         orientation='vertical'
       />
 
-      <Button
-        variant={'outlined'}
-        color='primary'
-        disableElevation
-        startIcon={<Icon>arrow_back</Icon>}
-      >
-        {'Voltar'}
-      </Button>
+      { mostrarBotaoVoltar && (
+
+        <Button
+          variant={'outlined'}
+          color='primary'
+          disableElevation
+          startIcon={<Icon>arrow_back</Icon>}
+        >
+          {'Voltar'}
+        </Button>
+      )}
 
     </Box>
     
