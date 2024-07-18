@@ -1,4 +1,4 @@
-import { Box, Icon, Button, useTheme, Paper, Divider, Skeleton } from '@mui/material';
+import { Box, Icon, Button, useTheme, Paper, Divider, Skeleton, Typography, useMediaQuery, Theme } from '@mui/material';
 
 interface IFerramentasDaListagemProps {
   textoBotaoNovo?: string,
@@ -47,6 +47,9 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDaListagemProps> = ({
   aoClicarEmBotaoApagar
 }) => {
   const theme = useTheme();
+  const smDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
+  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
+
   return (
     <Box 
       height={theme.spacing(5)}
@@ -65,8 +68,11 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDaListagemProps> = ({
           color='primary'
           disableElevation
           startIcon={<Icon>save</Icon>}
+
         >
-          {'Salvar'}
+          <Typography variant={'button'} whiteSpace={'nowrap'} textOverflow={'ellipsis'} overflow={'hidden'} fontSize={smDown || mdDown ? theme.spacing(1.2) : theme.spacing(1.7)}>
+            {'Salvar'}
+          </Typography>
         </Button>
       )}
 
@@ -74,19 +80,22 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDaListagemProps> = ({
         <Skeleton width={110} height={60} />
       )}
       
-      { (mostrarBotaoSalvarEFechar && !mostrarBotaoSalvarEFecharCarregando) && (
+      { (mostrarBotaoSalvarEFechar && !mostrarBotaoSalvarEFecharCarregando && !smDown) && (
 
         <Button
           variant={'outlined'}
           color='primary'
           disableElevation
           startIcon={<Icon>save</Icon>}
+          
         >
-          {'Salvar e voltar'}
+          <Typography variant={'button'} whiteSpace={'nowrap'} textOverflow={'ellipsis'} overflow={'hidden'}>
+            {'Salvar e voltar'}
+          </Typography>
         </Button>
       )}
 
-      { mostrarBotaoSalvarEFecharCarregando &&(
+      { (mostrarBotaoSalvarEFecharCarregando && !smDown) &&(
         <Skeleton width={180} height={60}/>
       )} 
 
@@ -97,8 +106,11 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDaListagemProps> = ({
           color='primary'
           disableElevation
           startIcon={<Icon>delete</Icon>}
+          
         >
-          {'Apagar'}
+          <Typography variant={'button'} whiteSpace={'nowrap'} textOverflow={'ellipsis'} overflow={'hidden'} fontSize={smDown ? theme.spacing(1.2) : theme.spacing(1.7)}>
+            {'Apagar'}
+          </Typography>
         </Button>
       )}
 
@@ -106,15 +118,18 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDaListagemProps> = ({
         <Skeleton width={110} height={60} />
       )}
 
-      { (mostrarBotaoNovo && !mostrarBotaoNovoCarregando) && (
+      { (mostrarBotaoNovo && !mostrarBotaoNovoCarregando && !smDown) && (
 
         <Button
           variant={'outlined'}
           color='primary'
           disableElevation
           startIcon={<Icon>add</Icon>}
+          
         >
-          {textoBotaoNovo}
+          <Typography variant={'button'} whiteSpace={'nowrap'} textOverflow={'ellipsis'} overflow={'hidden'}>
+            {textoBotaoNovo}
+          </Typography>
         </Button>
       )}
 
@@ -134,12 +149,15 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDaListagemProps> = ({
           color='primary'
           disableElevation
           startIcon={<Icon>arrow_back</Icon>}
+          
         >
-          {'Voltar'}
+          <Typography variant={'button'} whiteSpace={'nowrap'} textOverflow={'ellipsis'} overflow={'hidden'} fontSize={smDown  ? theme.spacing(1.2) : theme.spacing(1.7)}>
+            {'Voltar'}
+          </Typography>
         </Button>
       )}
 
-      {mostrarBotaoVoltarCarregando &&(
+      {(mostrarBotaoVoltarCarregando && !smDown) &&(
         <Skeleton width={110} height={60} />
       )}
 
