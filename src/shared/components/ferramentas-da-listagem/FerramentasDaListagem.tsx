@@ -1,4 +1,5 @@
 import { Box, Button, Icon, Paper, TextField, useTheme } from '@mui/material';
+import { Environment } from '../../environment';
 
 /*eslint-disable no-unused-vars*/
 /*eslint-disable react/prop-types*/
@@ -38,7 +39,7 @@ export const FerramentasDaListagem: React.FC<IFerramentasDaListagemProps> = (
 
       {mostrarInputBusca && (
         <TextField
-          placeholder='Pesquisar...'
+          placeholder= {Environment.INPUT_DE_BUSCA}
           value={textoDaBusca}
           size='small'
           onChange={(e) => aoMudarTextoDaBusca?.(e.target.value)}
