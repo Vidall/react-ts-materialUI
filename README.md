@@ -1,3 +1,3 @@
-# React + Typescipt + Material UI
+# React + Typescript + Material UI
 
 #### Em andamento ...
