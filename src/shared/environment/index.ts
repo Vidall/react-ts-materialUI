@@ -17,6 +17,28 @@ export const Environment = {
   /**
    * URL base de onde está a API do backend
    */
-  URL_BASE: 'http://localhost:3001'
+  URL_BASE: 'http://localhost:3001',
+
+  CAMINHO_ALUNOS: '/alunos'
+
+  // /**
+  //  * Caminhos da url para realizar operações com pessoas fisicas
+  //  */
+  // CAMINHO_PESSOA_FISICA:'/clientes/pessoaFisica',
+
+  // /**
+  //  * Caminhos da url para realizar operações com pessoas juridicas
+  //  */
+  // CAMINHO_PESSOA_JURIDICA:'/clientes/pessoaJuridica',
+
+  // /**
+  //  * Caminhos da url para realizar operações com pessoas juridicas
+  //  */
+  // CAMINHO_TECNICO:'/tecnico',
+
+  // /**
+  //  * Caminhos da url para logar na aplicação
+  //  */
+  // CAMINHO_ENTRAR:'/signin'
 
 };

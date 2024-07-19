@@ -22,7 +22,7 @@ type IPessoasComTotalCount = {
 
 const getAll = async (page = 1, limit = Environment.LIMITE_DE_LINHAS, filter = ''):Promise<IPessoasComTotalCount | Error> => {
   try {
-    const urlRelativa = `${Environment.URL_BASE}/cidades?page=${page}&limit=${limit}&filter=${filter}`;
+    const urlRelativa = `${Environment.CAMINHO_ALUNOS}?_page=${page}&_limit=${limit}&nomeCompleto_like=${filter}`;
     
     const { data, headers } = await Api.get(urlRelativa);
 
@@ -42,13 +42,74 @@ const getAll = async (page = 1, limit = Environment.LIMITE_DE_LINHAS, filter = '
   }
 };
 
-const getById = async ():Promise<any> => {};
+const getById = async (id: number):Promise<IDetalhePessoa | Error> => {
+  try {
+    const urlRelativa = `${Environment.CAMINHO_ALUNOS}/${id}`;
+    const { data } = await Api.get(urlRelativa);
 
-const create = async ():Promise<any> => {};
+    if ( data ) {
+      return data;
+    }
 
-const deleteById = async ():Promise<any> => {};
+    return new Error('Erro ao consultar o registro');
+  } catch (error) {
+    console.log(error);
 
-const updateById = async ():Promise<any> => {};
+    return new Error((error as {message: string}).message || 'Erro ao consultar o registro');
+  }
+};
+
+const create = async (pessoa: Omit<IDetalhePessoa, 'id'>):Promise<number | Error> => {
+
+  try {
+    const urlRelativa = `${Environment.CAMINHO_ALUNOS}`;
+
+    const { data } = await Api.post<IDetalhePessoa>(urlRelativa, pessoa);
+
+    if (data) {
+      return data.id;
+    }
+    
+    return new Error('Erro ao criar o registro');
+  } catch (error) {
+    console.error(error);
+
+    return new Error((error as {message: string}).message || 'Erro ao criar o registro');
+  }
+
+};
+
+const deleteById = async (id: number):Promise<void | Error> => {
+
+  try {
+    const urlRelativa = `${Environment.CAMINHO_ALUNOS}/${id}`;
+
+    const { data } = await Api.delete(urlRelativa);
+
+    if (data) return;
+
+    return new Error('Erro ao deletar registro');
+  } catch (error) {
+    console.error(error);
+
+    return new Error((error as {message: string}).message || 'Erro ao deletar registro');
+  }
+};
+
+const updateById = async (id: number, pessoa: IDetalhePessoa):Promise<void | Error> => {
+  try {
+    const urlRelativa = `${Environment.CAMINHO_ALUNOS}/${id}`;
+    const { data } = await Api.put(urlRelativa, pessoa);
+
+    if (data) return;
+
+    return new Error('Erro ao atualizar o registro');
+  } catch (error) {
+    console.error(error);
+
+    return new Error((error as {message: string}).message || 'Erro ao atualizar o registro');
+  }
+};
 
 export const PessoasService = {
   getAll,
